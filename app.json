@@ -1,0 +1,61 @@
+{
+  "pages": [
+    "pages/init/init",
+
+    "pages/appoint/appoint",
+    "pages/appntList/appntList",
+    "pages/course/course",
+    "pages/editChild/editChild",
+    "pages/feedback/feedback",
+    "pages/home/home",
+    "pages/me/me",
+    "pages/myAddress/myAddress",
+    "pages/myChildren/myChildren",
+    "pages/myName/myName",
+    "pages/myPhone/myPhone",
+    "pages/reserve/reserve"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "智慧爱宝",
+    "navigationBarBackgroundColor": "#f8f8f8",
+    "backgroundColor": "#f8f8f8",
+    "backgroundTextStyle": "dark",
+    "onReachBottomDistance": 50
+  },
+  "tabBar": {
+    "color": "#464a56",
+    "selectedColor": "#6595e9",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "主页",
+        "iconPath": "images/home-gray.png",
+        "selectedIconPath": "images/home-green.png"
+      },
+      {
+        "pagePath": "pages/reserve/reserve",
+        "text": "预约",
+        "iconPath": "images/clock-gray.png",
+        "selectedIconPath": "images/clock-green.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我的",
+        "iconPath": "images/me-gray.png",
+        "selectedIconPath": "images/me-green.png"
+      }
+    ],
+    "position": "bottom"
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 60000,
+    "downloadFile": 60000
+  },
+  "debug": false,
+  "sitemapLocation": "sitemap.json"
+}

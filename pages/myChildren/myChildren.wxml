@@ -1,0 +1,38 @@
+<view class="page">
+  <view class="page__hd">
+    <view class="page__title">我的孩子</view>
+    <view class="page__desc">最多支持3个</view>
+  </view>
+  <view class="page__bd page__bd_spacing">
+    <view wx:for="{{students}}" wx:key="id">
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">名字</view>
+          <view class="weui-cell__ft">{{item.name}}</view>
+        </view>
+        <view class="weui-cell">
+          <view class="weui-cell__bd">性别</view>
+          <view class="weui-cell__ft">{{item.bMale?'男':'女'}}</view>
+        </view>
+        <view class="weui-cell">
+          <view class="weui-cell__bd">生日</view>
+          <view class="weui-cell__ft">{{item.birthday}}</view>
+        </view>
+        <view class="weui-cell">
+          <view class="weui-cell__bd">年龄</view>
+          <view class="weui-cell__ft">{{item.age}}</view>
+        </view>
+      </view>
+      <view style="margin-top:20rpx;"></view>
+      <view style="display:flex;flex-direction:row;justify-content:space-between;">
+        <view style="margin-left:20rpx;"></view>
+        <view style="display:flex;flex-direction:row;">
+          <button type="primary" size="mini" plain="true" data-idx="{{index}}" bindtap="onEdit">编辑</button>
+          <button type="warn" size="mini" plain="true" style="margin-left:20rpx;" data-idx="{{index}}" bindtap="onDelete">删除</button>
+        </view>
+      </view>
+      <view style="margin-top:20rpx;"></view>
+    </view>
+    <button class="weui-btn" type="primary" plain="true" bindtap="onAdd" wx:if="{{students.length<=2}}">添加</button>
+  </view>
+</view>

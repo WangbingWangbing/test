@@ -1,0 +1,14 @@
+<view class="page">
+  <view class="page__hd">
+    <view class="page__title">我的地址</view>
+  </view>
+  <view class="page__bd page__bd_spacing">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <textarea class="weui-textarea" value="{{user.parent.address}}" style="height:200rpx;margin-top:20rpx;"
+        show-confirm-bar="true" bindinput="onAddress" bindconfirm="onConfirm" />
+      </view>
+    </view>
+    <button class="weui-btn" type="primary" plain="true" bindtap="onSave">保存</button>
+  </view>
+</view>

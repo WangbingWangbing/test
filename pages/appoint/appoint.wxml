@@ -1,0 +1,112 @@
+<view class="page">
+  <view class="page__hd">
+    <view class="page__title">课程详情</view>
+    <view class="page__desc">ID #{{appoint.id}}</view>
+  </view>
+  <view class="page__bd page__bd_spacing">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <view class="weui-label">订单状态</view>
+        </view>
+        <view class="weui-cell__bd" style="color:{{status[appoint.status].color}}">{{status[appoint.status].desc}}</view>
+        <view wx:if="{{appoint.status===STATUS_NOT_PAID || appoint.status===STATUS_EXPIRED}}"
+          class="weui-cell__ft weui-cell__ft_in-access" bindtap="onRemove" style="color:#666666">删除</view>
+        <view wx:elif="{{appoint.status===STATUS_PAID}}" 
+          class="weui-cell__ft weui-cell__ft_in-access" bindtap="onCancel" style="color:#666666">取消</view>
+        <view wx:elif="{{appoint.status===STATUS_CANCEL_ADMIN || appoint.status===STATUS_CANCEL_PARENT || appoint.status===STATUS_CANCEL_SYSTEM}}" 
+          class="weui-cell__ft weui-cell__ft_in-access" bindtap="onDelete" style="color:#666666">删除</view>
+        <view wx:else class="weui-cell__ft"></view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <view class="weui-label">宝宝信息</view>
+        </view>
+        <view class="weui-cell__bd">{{appoint.student.name}} {{appoint.student.bMale?'男':'女'}} {{appoint.student.birthday}}</view>
+        <view class="weui-cell__ft"></view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <view class="weui-label">课程信息</view>
+        </view>
+        <view class="weui-cell__bd">{{appoint.courseDesc}}</view>
+        <view class="weui-cell__ft"></view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <view class="weui-label">授课时间</view>
+        </view>
+        <view class="weui-cell__bd">{{appoint.date}} {{appoint.start}}-{{appoint.end}}</view>
+        <view class="weui-cell__ft"></view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <view class="weui-label">订单金额</view>
+        </view>
+        <view class="weui-cell__bd">{{appoint.price/100}}元</view>
+        <view class="weui-cell__ft"></view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <view class="weui-label">授课地址</view>
+        </view>
+        <view class="weui-cell__bd">{{appoint.address}}</view>
+        <view class="weui-cell__ft"></view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <view class="weui-label">家长电话</view>
+        </view>
+        <view class="weui-cell__bd">{{appoint.parentPhone}}</view>
+        <view class="weui-cell__ft"></view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <view class="weui-label">备注信息</view>
+        </view>
+        <view class="weui-cell__bd">{{appoint.parentComments||''}}</view>
+        <view class="weui-cell__ft"></view>
+      </view>
+      <view class="weui-cell" wx:if="{{appoint.status===STATUS_FEEDBACK}}">
+        <view class="weui-cell__hd">
+          <view class="weui-label">我的评价</view>
+        </view>
+        <view class="weui-cell__bd">{{appoint.feedback}}</view>
+        <view class="weui-cell__ft"></view>
+      </view>
+    </view>
+    <block wx:if="{{appoint.status===STATUS_NO_FEEDBACK}}">
+      <view class="weui-cells__title">评价该课程</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <view class="weui-label">服务星级</view>
+          </view>
+          <view class="weui-cell__bd">
+            <slider show-value min="0" max="5" value="{{3}}" bindchange="onFeedbackStars"/>
+          </view>
+          <view class="weui-cell__ft"></view>
+        </view>
+        <checkbox-group bindchange="onFeedbackChange">
+          <label class="weui-cell weui-check__label" wx:for="{{feedbackItems}}" wx:key="value">
+            <checkbox class="weui-check" value="{{item.value}}" checked="{{item.checked}}"/>
+            <view class="weui-cell__hd weui-check__hd_in-checkbox">
+              <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
+              <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked}}"></icon>
+            </view>
+            <view class="weui-cell__bd">{{item.name}}</view>
+          </label>
+        </checkbox-group>
+        <view class="weui-cell weui-cell_input">
+          <textarea class="weui-textarea" style="margin-top:20rpx;height:120rpx;" value="{{appoint.feedbackInput}}" placeholder="说说您的评价" bindinput="onFeedbackInput" />
+        </view>
+      </view>
+    </block>
+    <view style="margin-top:20rpx;" wx:if="{{appoint.status===STATUS_NOT_PAID}}">
+      <button class="weui-btn" type="primary" plain="true" bindtap="onPay">支付</button>
+    </view>
+    <view style="margin-top:20rpx;" wx:if="{{appoint.status===STATUS_NO_FEEDBACK}}">
+      <button class="weui-btn" type="primary" plain="true" bindtap="onFeedbackSubmit">提交评价</button>
+    </view>
+  </view>
+</view>

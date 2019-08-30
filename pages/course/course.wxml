@@ -1,0 +1,27 @@
+<view class="page">
+  <view class="page__bd page__bd_spacing">
+    <view style="width:100%;height:240rpx;background-size:100% 100%;background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAABQCAYAAABcbTqwAAAAAXNSR0IArs4c6QAAAjpJREFUeAHt1sFpW1EURVE9leCZwT2ohbSRRlKEC4nbUAvuQVgzt/BzHwmZWOwGvAQfi39GXtwNWqf5HMfxMn9e5/kxz/M8PgS+q8B9/vHrPL/WWrf1L473efE0jw8BAn8FPufPZQfye778pEKAwBeBtx3Ix7z2s+qLjRcETvcdyAGCAIHHAufHr70lQGALCMQdEAgBgQSOiYBA3ACBEBBI4JgICMQNEAgBgQSOiYBA3ACBEBBI4JgICMQNEAgBgQSOiYBA3ACBEBBI4JgICMQNEAgBgQSOiYBA3ACBEBBI4JgICMQNEAgBgQSOiYBA3ACBEBBI4JgICMQNEAgBgQSOiYBA3ACBEBBI4JgICMQNEAgBgQSOiYBA3ACBEBBI4JgICMQNEAgBgQSOiYBA3ACBEBBI4JgICMQNEAgBgQSOiYBA3ACBEBBI4JgICMQNEAgBgQSOiYBA3ACBEBBI4JgICMQNEAgBgQSOiYBA3ACBEBBI4JgICMQNEAgBgQSOiYBA3ACBEBBI4JgICMQNEAgBgQSOiYBA3ACBEBBI4JgICMQNEAgBgQSOiYBA3ACBEBBI4JgICMQNEAgBgQSOiYBA3ACBEBBI4JgICMQNEAgBgQSOiYBA3ACBEBBI4JgICMQNEAgBgQSOiYBA3ACBEBBI4JgICMQNEAgBgQSOicAO5I6BAIGHAvcdyPXh5CUBAtd1HMfLOLzP88SDAIH/Ap/z7XJea932l3ne5vFzaxB8vrXAbmC3cNlt/AGiYSfl1LW4oAAAAABJRU5ErkJggg==');">
+      <view style="padding:20rpx;">
+        <view style="display:flex;flex-direction:row;">
+          <image style="width:250rpx;height:200rpx;border-radius:3%;" src="{{course.titleImg}}"/>
+          <view style="margin-left:20rpx;"></view>
+          <view style="display:flex;flex-direction:column;justify-content:space-between;">
+            <image style="width:160rpx;height:60rpx;" src="{{ageImgs[course.ageGroup]}}"/>
+            <view style="font-size:18px;">{{course.title}}</view>
+            <view style="color:#888888;font-size:14px;">{{course.subTitle}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="weui-article">
+      <view style="margin-bottom:1em;" wx:for="{{course.desc}}" wx:key="id">
+        <view wx:if="{{item.text}}">{{item.text}}</view>
+        <image wx:if="{{item.image}}" src="{{item.image}}" style="width:640rpx;" mode="widthFix" data-idx="{{index}}" bindtap="onPreview"/>
+      </view>
+      <view>价格：¥{{course.price/100}}元</view>
+    </view>
+    <navigator url="/pages/reserve/reserve" open-type="switchTab" hover-class="weui-cell_active">
+      <button class="weui-btn" type="primary" plain="true">预约课程</button>
+    </navigator>
+  </view>
+</view>

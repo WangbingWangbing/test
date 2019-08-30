@@ -1,0 +1,47 @@
+<view class="page">
+  <view class="page__hd">
+    <view class="page__title">{{bNew?'添加孩子':'编辑孩子'}}</view>
+    <view class="page__desc">注意：孩子的出生日期将决定孩子能选的课程</view>
+  </view>
+  <view class="page__bd page__bd_spacing">
+    <view class="weui-cells__title">名字</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请填写" value="{{student.name}}" bindinput="onName"/>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__title">性别</view>
+    <view class="weui-cells weui-cells_after-title">
+      <radio-group bindchange="onSex">
+        <label class="weui-cell weui-check__label">
+          <radio class="weui-check" value="1"/>
+          <view class="weui-cell__bd">男</view>
+          <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{student.bMale}}">
+            <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+          </view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <radio class="weui-check" value="0"/>
+          <view class="weui-cell__bd">女</view>
+          <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{!student.bMale}}">
+            <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+          </view>
+        </label>
+      </radio-group>
+    </view>
+    <view class="weui-cells__title">生日</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after"></view>
+        <view class="weui-cell__bd">
+          <picker mode="date" value="{{student.birthday}}" start="{{startDate}}" end="{{endDate}}" bindchange="onBirthday">
+            <view class="weui-select weui-select_in-select-after">{{student.birthday}}</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+    <button class="weui-btn" type="primary" plain="true" bindtap="onSave">保存</button>
+  </view>
+</view>

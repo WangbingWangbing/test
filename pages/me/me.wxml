@@ -1,0 +1,56 @@
+<view class="page">
+  <view class="page__hd">
+    <view class="weui-msg">
+      <view class="weui-msg__icon-area">
+        <image style="width:128rpx;height:128rpx;border-radius:50%;" src="{{user.wxAvatarUrl}}" background-size="cover"/>
+        <view style="color:#aaa;">{{user.wxNickName}}</view>
+        <view style="color:#aaa;">家长 ID #{{user.parentId}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="page__bd page__bd_spacing">
+    <view class="weui-cells weui-cells_after-title">
+      <navigator url="/pages/myName/myName" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+          <view class="weui-label">我的名字</view>
+        </view>
+        <view class="weui-cell__bd">{{user.parent.name||''}}</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">{{user.parent.name?'':'添加'}}</view>
+      </navigator>
+      <navigator url="/pages/myPhone/myPhone" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+          <view class="weui-label">我的电话</view>
+        </view>
+        <view class="weui-cell__bd">{{user.phone||''}}</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">{{user.phone?'':'添加'}}</view>
+      </navigator>
+      <navigator url="/pages/myAddress/myAddress" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+          <view class="weui-label">我的地址</view>
+        </view>
+        <view class="weui-cell__bd" style="font-size:12px;">{{user.parent.address||''}}</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">{{user.parent.address?'':'添加'}}</view>
+      </navigator>
+      <navigator url="/pages/myChildren/myChildren" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+          <view class="weui-label">我的孩子</view>
+        </view>
+        <view class="weui-cell__bd">{{nChildren>=0?nChildren+'个':''}}</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">{{nChildren==0?'添加':''}}</view>
+      </navigator>
+      <navigator url="/pages/appntList/appntList" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+          <view class="weui-label">我的课程</view>
+        </view>
+        <view class="weui-cell__bd"></view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+    </view>
+    <view class="weui-footer" style="margin-top:100rpx;">
+      <view class="weui-footer__links">
+        <navigator url="/pages/feedback/feedback" class="weui-footer__link">意见反馈</navigator>
+      </view>
+      <view class="weui-footer__text">版本 {{version}} {{server=='beta'?'beta':server=='alpha1'?'alpha1':server=='alpha2'?'alpha2':''}}</view>
+    </view>
+  </view>
+</view>

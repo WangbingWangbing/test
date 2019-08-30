@@ -1,0 +1,14 @@
+<view class="page">
+  <view class="page__hd">
+    <view class="page__title">反馈</view>
+    <view class="page__desc">欢迎您留下意见和建议</view>
+  </view>
+  <view class="page__bd page__bd_spacing">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <textarea class="weui-textarea" value="" style="height:300rpx;margin-top:20rpx;" show-confirm-bar="true" bindinput="onInput" />
+      </view>
+    </view>
+    <button class="weui-btn" type="primary" plain="true" bindtap="onSend">发送</button>
+  </view>
+</view>

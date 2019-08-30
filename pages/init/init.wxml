@@ -1,0 +1,20 @@
+<view class="page">
+  <view class="page__bd page__bd_spacing">
+    <view wx:if="{{bAuthNeeded}}" style="display:flex;flex-direction:column;align-items:center;">
+      <view style="margin-top:100rpx;"></view>
+      <image src="{{titleImg}}" mode="widthFix" style="width:600rpx;"/>
+      <view style="margin-top:60rpx;"></view>
+      <button class="weui-btn" style="width:600rpx;" type="primary" open-type="getUserInfo" bindgetuserinfo="onUserInfo">
+        需要您的授权
+      </button>
+    </view>
+    <block wx:if="{{!bAuthNeeded && !bLoading}}">
+      <view class="weui-msg">
+        <view class="weui-msg__icon-area">
+          <image style="width:128rpx;height:128rpx;border-radius:50%;" src="{{user.wxAvatarUrl}}" background-size="cover"/>
+          <view style="color:#aaa;">{{user.wxNickName}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
